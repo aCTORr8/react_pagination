@@ -3,7 +3,7 @@ type Props = {
   perPage: number;
   currentPage: number;
   onPageChange: (page: number) => void;
-}
+};
 
 export const Pagination: React.FC<Props> = ({
   total,
@@ -20,16 +20,20 @@ export const Pagination: React.FC<Props> = ({
     }
   };
 
-  const handlePrevClick = () => {
-    if (totalPages && currentPage === 1) {
+  const handlePrevClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+
+    if (currentPage === 1) {
       return;
     }
 
     onPageChange(currentPage - 1);
   };
 
-  const handleNextClick = () => {
-   if (totalPages && currentPage === totalPages) {
+  const handleNextClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+
+    if (currentPage >= totalPages) {
       return;
     }
 
@@ -37,7 +41,7 @@ export const Pagination: React.FC<Props> = ({
   };
 
   return (
-        <ul className="pagination">
+    <ul className="pagination">
       <li className={currentPage === 1 ? 'page-item disabled' : 'page-item'}>
         <a
           data-cy="prevLink"
@@ -83,5 +87,5 @@ export const Pagination: React.FC<Props> = ({
         </a>
       </li>
     </ul>
-  )
+  );
 };

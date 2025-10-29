@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import { getNumbers } from './utils';
 import { Pagination } from './components/Pagination';
@@ -14,7 +14,7 @@ export const App: React.FC = () => {
   const end = start + perPage;
 
   const handlePerPageSelector = (
-    event: React.ChangeEvent<HTMLSelectElement>
+    event: React.ChangeEvent<HTMLSelectElement>,
   ) => {
     setPerPage(+event.target.value);
     setCurrentPage(1);
@@ -25,8 +25,7 @@ export const App: React.FC = () => {
       <h1>Items with Pagination</h1>
 
       <p className="lead" data-cy="info">
-        Page {currentPage} (items {start + 1} - {Math.min(end, total)} of{' '}
-        {total})
+        Page {currentPage} (items {start + 1} - {Math.min(end, total)} of {total})
       </p>
 
       <div className="form-group row">
